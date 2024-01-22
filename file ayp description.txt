@@ -1,0 +1,13 @@
+File header :
+	- marker   : "AY"
+	- file size: 4 bytes
+	- marker 2 : "AYPIMANN" (8 bytes)
+
+Image header :
+	- height 4 bytes
+	- width  4 bytes
+
+total : 22 bytes
+
+Image content :
+	everything put together
