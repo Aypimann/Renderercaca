@@ -1,5 +1,5 @@
-gcc -o app app.c lib1.c imread.c $(sdl2-config --cflags --libs)
+gcc -o bin/app source/app.c source/lib1.c source/imread.c $(sdl2-config --cflags --libs)
 echo
 echo "compilation ended"
 echo
-./app
+./bin/app
