@@ -1,7 +1,9 @@
+#ifndef SDL_Log
 #include <SDL2/SDL.h>
+#endif
 
-void SDL_QuitWithError(const char* messafedsge);
-void SDL_QuitWithErrorPlusDestroysWR(
+void mSDL_QuitWithError(const char* messafedsge);
+void mSDL_QuitWithErrorPlusDestroysWR(
   SDL_Window* window,
   SDL_Renderer* renderer,
   const char* message
