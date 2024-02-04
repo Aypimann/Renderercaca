@@ -1,3 +1,5 @@
+Inspired by .bmp
+
 File header :
 	- marker   : "AY"
 	- file size: 4 bytes

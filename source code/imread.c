@@ -37,12 +37,15 @@ int readAyp(image* imPtr, const char* path) {
   }
   im.height = *(int32_t*)(header + HEIGHT);
   im.width  = *(int32_t*)(header + WIDTH );
+  printf("par hazard combien ? %d\n", *(int32_t*)(header+2));
   free(header);
   
   //read rows
+  printf("coucou, on arrive là 1 ?\n");
   im.arr = malloc(im.height * sizeof(char*));
   int i = 0;
   while(!feof(inputFile) && i < im.height) {
+    printf("coucou, on arrive là 2 ? row: %d\n", i);
     im.arr[i] = malloc(3*im.width);
     fgets((char*)im.arr[i], 3*im.width+ 1, inputFile );
     if ( ferror( inputFile ) ) {

@@ -31,9 +31,9 @@ int main(int argc, char** argv) {
     mSDL_QuitWithError("Renderer making");
   }
 
-  for (y = 0; y < 99; y++) {
-    for (x = 0; x < 99; x++) {
-      drawPoint(window, renderer, a.arr[y/33]+3*(x/33), x, y);
+  for (y = 0; y < a.height; y++) {
+    for (x = 0; x < a.width; x++) {
+      drawPoint(window, renderer, a.arr[y]+3*x, x, y);
     }
   }
 

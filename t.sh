@@ -2,4 +2,4 @@ gcc -o bin/app source\ code/app.c source\ code/lib1.c source\ code/imread.c $(sd
 echo
 echo "compilation ended"
 echo
-./bin/app "./resources/im.ayp"
+./bin/app "./resources/test.ayp"
