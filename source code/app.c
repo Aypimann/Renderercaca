@@ -1,7 +1,7 @@
 #include "app.h"
 
 int main(int argc, char** argv) {
-  printf("Renderercaca 0.0.0\n");
+  printf("Renderercaca 0.0.1\n");
   if (argc!=2){
     printf("Args given : %d, expected : %d\nExpected usage : ./app path\n", argc, 1);
     return -1;
@@ -33,12 +33,14 @@ int main(int argc, char** argv) {
 
   for (y = 0; y < a.height; y++) {
     for (x = 0; x < a.width; x++) {
-      drawPoint(window, renderer, a.arr[y]+3*x, x, y);
+      drawPoint(window, renderer, get_pxl(a, x, y), x, y);
     }
   }
 
   SDL_RenderPresent(renderer);
   SDL_Delay(5000);
+
+  freeImAyp(a);
 
   SDL_DestroyRenderer(renderer);
   SDL_DestroyWindow(window);

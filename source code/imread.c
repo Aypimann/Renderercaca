@@ -8,11 +8,9 @@ void printTab(unsigned char* t, int l){
   printf("]\n");
 }
 
-void freeImAyp(image im){
-  for(int i = 0; i < im.height; i++)
-    free(im.arr[i]);
-  free(im.arr);
-}
+char* get_pxl(image im, int x, int y) {return im.arr + 3 * (x + y * im.width);}
+
+void freeImAyp(image im) {free(im.arr);}
 
 int readAyp(image* imPtr, const char* path) {
   image im;
@@ -36,24 +34,27 @@ int readAyp(image* imPtr, const char* path) {
     return -1;
   }
   im.height = *(int32_t*)(header + HEIGHT);
-  im.width  = *(int32_t*)(header + WIDTH );
-  printf("par hazard combien ? %d\n", *(int32_t*)(header+2));
+  im.width = *(int32_t*)(header + WIDTH );
+  im.size = *(int32_t*)(header + SIZE );
+  im.size -= 22;
   free(header);
   
   //read rows
-  printf("coucou, on arrive là 1 ?\n");
-  im.arr = malloc(im.height * sizeof(char*));
-  int i = 0;
-  while(!feof(inputFile) && i < im.height) {
-    printf("coucou, on arrive là 2 ? row: %d\n", i);
-    im.arr[i] = malloc(3*im.width);
-    fgets((char*)im.arr[i], 3*im.width+ 1, inputFile );
+  im.arr = malloc(im.size);
+  if (im.arr == NULL){
+    printf("image malloc failed");
+    fclose(inputFile);
+    return -1;
+  }
+  printf("size : %d\nheight : %d\nwidth : %d\n", im.size, im.height, im.width);
+  for(int i = 0; !feof(inputFile) && i < im.height; i++) {
+    fgets((char*)im.arr + i * 3 * im.width, 3*im.width+ 1, inputFile );
     if ( ferror( inputFile ) ) {
       printf("Reading error with code %d\n", errno);
       fclose(inputFile);
+      free(im.arr);
       return -1;
     }
-    i++;
   }
   
   fclose(inputFile);
