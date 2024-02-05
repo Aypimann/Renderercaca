@@ -1,0 +1,6 @@
+mettre tag sur les triangle
+
+for face
+	prendre point p1 visible
+		if non ligne p1 p2 traverse:
+			yp2 < min y surfcace

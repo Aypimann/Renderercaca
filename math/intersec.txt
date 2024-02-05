@@ -1,0 +1,3 @@
+utiliser des lites. prendre un tableau de vect mettre dans liste[0] de liste de liste
+séparet les vect entre d'un coté, de l'autre de la droite ou au milieu (les 2); 
+continuer de compartrer que ceux du même coté et les transverseaux ensemble et se débrouiller pour de pas effectuer 1200 la même comparaison (peut être hashmap) 
