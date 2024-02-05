@@ -1,4 +1,5 @@
 #include "app.h"
+#define ZOOM 1
 
 int main(int argc, char** argv) {
   printf("Renderercaca 0.0.1\n");
@@ -31,9 +32,9 @@ int main(int argc, char** argv) {
     mSDL_QuitWithError("Renderer making");
   }
 
-  for (y = 0; y < a.height; y++) {
-    for (x = 0; x < a.width; x++) {
-      drawPoint(window, renderer, get_pxl(a, x, y), x, y);
+  for (y = 0; y < a.height * ZOOM; y++) {
+    for (x = 0; x < a.width * ZOOM; x++) {
+      drawPoint(window, renderer, get_pxl(a, x / ZOOM, y / ZOOM), x, y);
     }
   }
 
