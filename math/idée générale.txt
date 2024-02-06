@@ -1,1 +1,61 @@
-Pour chaque point, je regarde s'il est visible le cas échéant, une fois fait si la découpe de l'image en triangles a bien été faite, un triangle est soit entièrement visible soit pas du tout. Il est visible si tous ses somets sont visibles.
+REPÈRE :
+    axes :
+        Ox : vers la droite
+        Oy : vers le haut
+        Oz : vers nous, le - fond, la - profondeur
+    origine :
+        O
+    vecteurs si vraiment : ux, uy, uz
+    (point lambda : M(x, y, z))
+
+
+1)
+avoir les infos:
+    -les point dans l'espace (x, y, z)
+    -les faces (triplet de 3 points d'haut dessus dans l'ordre voir partie 4)
+    -les textures (image)
+    -la texure map : faces -> (triplet de trois points dans une image)
+    -éventuellement des trucs suplémentaires (normal map)
+
+2)
+rotation + translation (décrit toutes sim+ qui conserve les longeurs parceque blc des longueurs) :
+    convention pour l'instant
+    (lacet, tangage, roulis = 0) = (yaw, pitch, roll)
+    lacet : sens trigo vu de haut (y+ en haut, )
+    tangage : sens trigo vu depuis la droite (z+ en haut, y+ à droite)
+    roulis : = 0 mais on va dire que sens trigo en regardant vr
+
+3)
+application de la perspective :
+    si y > 0 :
+        (x,y) -> (x,y)*1/(-y) (le y de l'espace pas de la profondeur)
+        y -> -y (profondeur pour les calculs ulterieurs)
+    si pour tous les point d'une faces, y <= 0, BLC (voir y <= 0 || |x| <= |y| ) 
+    /!\ aucune idée pour gérer les faces qui :
+        sont dans le champ de vision et qui passe derière la caméra
+            i.e : dans une faces y positif ET négatif
+
+On a donc un set de point en perspective muni de leur profondeur, on les garde en float (ou double) et max(hauteur,largeur) = 1.
+
+4)
+on regarde les faces qui pointent dans le bon sens :
+    on se place dans le plan Ox, Oy et on fait un produit scalaire
+    on prend A, B, C dans l'odre de la face
+    u = (xu,yu) = vec AB
+    v = (xv,yv) = vec AC
+    v' = v tourné de pi/2 sens trigo = (-yv,xv) 
+    u . v' > 0 => la face est dans le bon sens
+
+
+// pas sûr de ces étapes
+5)
+découpe des faces:
+    On veut une face visible ssi tous ses somets sont visibles.
+    on utilise intersec
+    TODO
+
+6)
+sommets visible ou pas
+    filtre des sommets de faces découpées visibles
+//fin du pas sûr de ces étapes
+
