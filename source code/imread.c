@@ -46,7 +46,6 @@ int readAyp(image* imPtr, const char* path) {
     fclose(inputFile);
     return -1;
   }
-  printf("size : %d\nheight : %d\nwidth : %d\n", im.size, im.height, im.width);
   for(int i = 0; !feof(inputFile) && i < im.height; i++) {
     fgets((char*)im.arr + i * 3 * im.width, 3*im.width+ 1, inputFile );
     if ( ferror( inputFile ) ) {

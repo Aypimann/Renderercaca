@@ -4,4 +4,4 @@ eq (AB) : deltaY*(xC-xA)+(yA-yC)*detaX < 0
 
 dans triange soit nous en dessous soit au dessus des 3 en même temsp en tourant dans le même sens
 
-
+tmps quadratique ?????

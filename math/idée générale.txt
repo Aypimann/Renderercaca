@@ -1,0 +1,1 @@
+Pour chaque point, je regarde s'il est visible le cas échéant, une fois fait si la découpe de l'image en triangles a bien été faite, un triangle est soit entièrement visible soit pas du tout. Il est visible si tous ses somets sont visibles.
