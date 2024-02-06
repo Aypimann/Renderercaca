@@ -1,6 +1,6 @@
 import sys
 from PIL import Image, ImageDraw
-from random import randint
+from random import randint, random
 
 def drawlines(l):
     with Image.open("blank.png") as im:
@@ -14,7 +14,9 @@ def drawlines(l):
             im.save(imo, "PNG")
 
 if __name__ == "__main__":
-    l = [int(float(s)*100) for s in input(">").split(',')]
-    #print(l)
+    #l = [int(float(s)*100) for s in input(">").split(',')]
+    l = [5* random() for i in range(8)]
+    print(l)
+    l = [int(100 * e) for e in l]
     if (len(l)%4==0):
         drawlines(l)
