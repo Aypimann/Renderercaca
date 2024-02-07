@@ -1,11 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-float* intersec2D(float** l1, float** l2){
+float* intersec2D(float** e1, float** e2){
 
     float m[4] = {
-        l1[1][0] - l1[0][0], l2[0][0] - l1[0][0],
-        l1[1][1] - l1[0][1], l2[0][1] - l1[0][1]
+        e1[1][0] - e1[0][0], e2[0][0] - e1[0][0],
+        e1[1][1] - e1[0][1], e2[0][1] - e1[0][1]
     };
 
     float inv_det = m[0]*m[3]-m[1]*m[2];
@@ -25,8 +25,8 @@ float* intersec2D(float** l1, float** l2){
     printf("mm1 : |%f   %f|\n      |%f   %f|\n\n\n", m_1[0], m_1[2], m_1[1], m_1[3]);
 
     float* p1 = malloc(2* sizeof(float));
-    p1[0] = (l2[1][0] - l1[0][0]) * m_1[0] + (l2[1][1] - l1[0][1]) * m_1[1];
-    p1[1] = (l2[1][0] - l1[0][0]) * m_1[2] + (l2[1][1] - l1[0][1]) * m_1[3];
+    p1[0] = (e2[1][0] - e1[0][0]) * m_1[0] + (e2[1][1] - e1[0][1]) * m_1[1];
+    p1[1] = (e2[1][0] - e1[0][0]) * m_1[2] + (e2[1][1] - e1[0][1]) * m_1[3];
 
     printf("v : |%f|\n    |%f|\n\n\n", p1[0], p1[1]);
 
@@ -34,8 +34,8 @@ float* intersec2D(float** l1, float** l2){
         return NULL;
     
     p1[0] = p1[0] / (1-p1[1]);
-    p1[1] = p1[0] * m[2] + l1[0][1];
-    p1[0] = p1[0] * m[0] + l1[0][0];
+    p1[1] = p1[0] * m[2] + e1[0][1];
+    p1[0] = p1[0] * m[0] + e1[0][0];
     return p1;
 }
 
@@ -46,14 +46,14 @@ int main(int argc, char** argv) {
 0.2872233614488351, 2.6866746102120915, 4.843282585757584, 2.440882398917314, 2.348329625124767, 3.28682396564802, 0.4069989349216918, 2.2290487479349235
 
     };
-    float* l1[2] = {pts+0, pts+2};
-    float* l2[2] = {pts+4, pts+6};
+    float* e1[2] = {pts+0, pts+2};
+    float* e2[2] = {pts+4, pts+6};
 
-    printf("l1 :  x: %f   y : %f <-> x: %f   y : %f\n", l1[0][0], l1[0][1], l1[1][0], l1[1][1]);
-    printf("l2 :  x: %f   y : %f <-> x: %f   y : %f\n", l2[0][0], l2[0][1], l2[1][0], l2[1][1]);
+    printf("e1 :  x: %f   y : %f <-> x: %f   y : %f\n", e1[0][0], e1[0][1], e1[1][0], e1[1][1]);
+    printf("e2 :  x: %f   y : %f <-> x: %f   y : %f\n", e2[0][0], e2[0][1], e2[1][0], e2[1][1]);
     printf("\n\n\n");
 
-    float* inte = intersec2D(l1,l2);
+    float* inte = intersec2D(e1,e2);
 
     printf("fin fct\n");
 

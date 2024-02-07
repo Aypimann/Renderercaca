@@ -1,4 +1,4 @@
-REPAIRE :
+REPÈRE :
     axes :
         Ox : vers la droite
         Oy : vers le haut
@@ -8,6 +8,9 @@ REPAIRE :
     vecteurs si vraiment : ux, uy, uz
     (point lambda : M(x, y, z))
 
+bons mots :
+EN : faces, edges, vertices
+FR : faces, arrêtes, sommets
 
 1)
 avoir les infos:
@@ -34,8 +37,9 @@ application de la perspective :
     /!\ aucune idée pour gérer les faces qui :
         sont dans le champ de vision et qui passe derière la caméra
             i.e : dans une faces y positif ET négatif
+        idée d'elio pimp : intersec avec le cadre du fov
 
-On a donc un set de point en perspective muni de leur profondeur, on les garde en float (ou double) et max(hauteur,largeur) = 1.
+On a donc un set de point en perspective muni de leur profondeur, on les garde en float (ou double) et max(hauteur,largeur) mapé entre -1 et 1.
 
 4)
 on regarde les faces qui pointent dans le bon sens :
