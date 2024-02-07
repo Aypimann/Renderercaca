@@ -1,4 +1,4 @@
-REPÈRE :
+REPAIRE :
     axes :
         Ox : vers la droite
         Oy : vers le haut
@@ -59,3 +59,8 @@ sommets visible ou pas
     filtre des sommets de faces découpées visibles
 //fin du pas sûr de ces étapes
 
+7)
+on calcule la matrice 2 par 2 et le vecteur pour passer du triangle de texture au triangle de l'écran (1 par vrai triangle)
+
+8)
+pour chaque faux triangle, muni de sa box, draw les pixel de sa matrice et de son vecteur

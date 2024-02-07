@@ -1,6 +1,6 @@
 mettre tag sur les triangle
 
 for face
-	prendre point p1 visible
+	prendre point p1 visible #pk visible ??? #prc que même avec les 3 sommets cachés ça empèche pas  
 		if non ligne p1 p2 traverse:
 			yp2 < min y surfcace
