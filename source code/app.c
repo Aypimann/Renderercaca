@@ -1,6 +1,6 @@
 #include "app.h"
 #define ZOOM 1
-
+/*
 int main(int argc, char** argv) {
   printf("Renderercaca 0.0.1\n");
   if (argc!=2){
@@ -48,4 +48,8 @@ int main(int argc, char** argv) {
   SDL_Quit();
 
   return EXIT_SUCCESS;
+}*/
+
+int main(){
+  printf("%d",sizeof(float));
 }

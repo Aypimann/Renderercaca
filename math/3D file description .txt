@@ -1,0 +1,28 @@
+Objectifs :
+    avoir les infos:
+        -les point dans l'espace (x, y, z)
+        -les faces (triplet de 3 points d'haut dessus dans l'ordre voir partie 4)
+        -les textures (image)
+        -la texure map : faces -> (triplet de trois points dans une image)
+        -éventuellement des trucs suplémentaires (normal map)
+
+Déscription de la structure des fichiers 3D:
+
+File header :
+	- marker   : "Y3"
+	- file size: (4 bytes)
+	- marker 2 : "AYPIMAN3" (8 bytes)
+
+Comment :
+    - adrress of end of the comment (4 bytes)
+    # comment
+
+Image header :
+	- n° of vertices (4 bytes)
+	- n° of faces (4 bytes)
+    - end address of begining addresses for the data array  + data size (4 bytes)
+    # array addresses + data size (4+4 bytes each)'
+
+Conctent :
+    - vertices (12 bytes 3*size_of(float))
+    - faces (3 * 4 bytes)
